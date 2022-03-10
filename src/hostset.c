@@ -26,12 +26,11 @@ static ssize_t proc_write(struct file *file, const char __user *input,
 #define HIT_COUNT_DISPL_WIDTH 12
 #define HSE_SIZE_OVERHEAD (HIT_COUNT_DISPL_WIDTH + 2)
 
-static struct file_operations proc_fops = {
-    .owner = THIS_MODULE,
-    .open = seq_file_open,
-    .read = seq_read,
-    .write = proc_write,
-    .release = seq_release,	
+static struct proc_ops proc_fops = {
+    .proc_open = seq_file_open,
+    .proc_read = seq_read,
+    .proc_write = proc_write,
+    .proc_release = seq_release,	
 };
 
 // Initialize a host set
